@@ -1,0 +1,22 @@
+
+.emailSection {
+    display: flex;
+}
+  
+.emailInput {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+  
+.sendButton {
+    padding: 10px 20px;
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+  
