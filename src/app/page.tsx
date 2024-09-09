@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 
-import TitleComponent from './components/TitleComponent/TitleComponent';
-import SubtitleComponent from './components/SubtitleComponent/SubtitleComponent';
-import ButtonComponent from './components/ButtonComponent/ButtonComponent';
-import EmailSubscriptionForm from './components/EmailSubscriptionForm/EmailSubscriptionForm';
+import TitleComponent from '../components/TitleComponent/TitleComponent';
+import SubtitleComponent from '../components/SubtitleComponent/SubtitleComponent';
+import ButtonComponent from '../components/ButtonComponent/ButtonComponent';
+import EmailSubscriptionForm from '../components/EmailSubscriptionForm/EmailSubscriptionForm';
 
 import styles from './page.module.css';
 
