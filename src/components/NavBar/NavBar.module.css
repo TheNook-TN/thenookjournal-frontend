@@ -1,0 +1,57 @@
+.navList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .navList li {
+    padding: 10px; /* Adjust padding as needed */
+    text-align: center;
+  }
+  
+  .separator {
+    display: none; /* Initially hide the separator */
+  }
+  
+  /* Responsive Design: Items in a row with separators, switch to column on small screens */
+  @media (min-width: 601px) {
+    .navList {
+      flex-direction: row;
+    }
+    .separator {
+      display: inline; /* Show separators only on larger screens */
+      padding: 0 10px; /* Adjust spacing around separators */
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .navList {
+      flex-direction: column;
+    }
+    .navList li,
+    .separator {
+      display: block;
+      padding: 8px 0; /* More vertical padding for mobile */
+    }
+    .separator {
+      display: none; /* Hide separators on small screens */
+    }
+  }
+  
+  .footer {
+    background-color: #303030;
+    padding: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #888888;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .footer {
+      font-size: 10px;
+    }
+  }
+  

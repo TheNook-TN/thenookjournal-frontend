@@ -4,3 +4,9 @@
     font-family: 'Lumberjack Rough';
     margin-bottom: 1rem;
 }
+
+@media (max-width: 600px) {
+    .title {
+        font-size: 2.5rem;
+    }
+}
