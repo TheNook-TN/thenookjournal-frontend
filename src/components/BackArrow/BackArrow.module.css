@@ -1,0 +1,15 @@
+.backArrow {
+    display: inline-block;
+    max-width: 100%;
+    max-height: 50px;
+    width: auto;
+    height: auto;
+    cursor: pointer; /* Makes it clear it's clickable */
+}
+  
+@media (max-width: 480px) {
+    .backArrow {
+      max-height: 30px; /* Adjust size for smaller screens */
+    }
+}
+  
