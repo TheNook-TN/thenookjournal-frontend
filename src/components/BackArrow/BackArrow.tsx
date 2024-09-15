@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import styles from './BackArrow.module.css'; // Ensure you have corresponding CSS file
+import styles from '@/components/BackArrow/BackArrow.module.css'; 
 
 const BackArrow = () => {
   return (

@@ -1,6 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 
+import styles from '@/components/NavItem/NavItem.module.css';
+
 interface NavItemProps {
     href: string;
     label: string;
@@ -9,7 +11,7 @@ interface NavItemProps {
 const NavItem: React.FC<NavItemProps> = ({ href, label }) => {
     return (
         <li>
-            <Link href={href} passHref>
+            <Link className={styles.navItem} href={href} passHref>
                 {label}
             </Link>
         </li>

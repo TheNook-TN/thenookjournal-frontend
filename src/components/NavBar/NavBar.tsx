@@ -15,11 +15,10 @@ const NavBar = () => {
                 <NavItem href="/archive" label="Archive" />
                 <span className={styles.separator}>|</span>
 
-                <NavItem href="/advertise" label="Privacy" />
+                <NavItem href="/advertise" label="Advertise" />
                 <span className={styles.separator}>|</span>
 
                 <NavItem href="/follow" label="Follow" />
-                <span className={styles.separator}>|</span>
             </ul>
         </nav>
     );

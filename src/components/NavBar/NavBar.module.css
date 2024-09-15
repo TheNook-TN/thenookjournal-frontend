@@ -3,55 +3,56 @@
     padding: 0;
     margin: 0;
     display: flex;
+    align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-  }
+}
   
-  .navList li {
-    padding: 10px; /* Adjust padding as needed */
+.navList li {
+    padding: 10px; 
     text-align: center;
-  }
+}
   
-  .separator {
-    display: none; /* Initially hide the separator */
-  }
+.separator {
+    display: none;
+    align-self: center;
+}
   
-  /* Responsive Design: Items in a row with separators, switch to column on small screens */
-  @media (min-width: 601px) {
+@media (min-width: 601px) {
     .navList {
-      flex-direction: row;
+        flex-direction: row;
     }
     .separator {
-      display: inline; /* Show separators only on larger screens */
-      padding: 0 10px; /* Adjust spacing around separators */
+        display: inline; 
+        padding: 0 10px; 
     }
-  }
+}
   
-  @media (max-width: 600px) {
+@media (max-width: 600px) {
     .navList {
-      flex-direction: column;
+        flex-direction: column;
     }
     .navList li,
     .separator {
-      display: block;
-      padding: 8px 0; /* More vertical padding for mobile */
+        display: block;
+        padding: 8px 0; 
     }
     .separator {
-      display: none; /* Hide separators on small screens */
+        display: none; 
     }
-  }
+}
   
-  .footer {
+.footer {
     background-color: #303030;
     padding: 20px;
     text-align: center;
     font-size: 12px;
     color: #888888;
-  }
+}
   
-  @media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
     .footer {
-      font-size: 10px;
+        font-size: 10px;
     }
-  }
+}
   

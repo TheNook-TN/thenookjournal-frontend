@@ -9,12 +9,12 @@ import EmailSubscriptionForm from '@/components/EmailSubscriptionForm/EmailSubsc
 import NavBar from '@/components/NavBar/NavBar';
 import Footer from '@/components/Footer/Footer';
 
-import styles from './page.module.css';
+import styles from '@/app/page.module.css';
 
 export default function HomePage() {
-    const [clickedButtons, setClickedButtons] = useState<string[]>([]);
-
     const buttons = ["AI, Data Science & Machine Learning 🧠"];
+
+    const [clickedButtons, setClickedButtons] = useState<string[]>([]);
 
     const handleButtonClick = (button: string) => {
         if (clickedButtons.includes(button)) {
@@ -26,12 +26,18 @@ export default function HomePage() {
 
     return (
         <main className={styles.container}>
-            <div className={styles.titleSubtitleGroup}>
-                <TitleComponent />
-                <SubtitleComponent />
+            <div className={styles.navBarContainer}>
+                <NavBar />
             </div>
-
-            <div className={styles.buttons}>
+            <div className={styles.titleSubtitleContainer}>
+                <TitleComponent 
+                    text='thenookjournal.com'
+                />
+                <SubtitleComponent 
+                    text={['This is your Nook', 'This is your Journal']}
+                />
+            </div>
+            <div className={styles.buttonsContainer}>
                 {buttons.map((button, index) => (
                     <ButtonComponent
                         key={index}
@@ -41,10 +47,10 @@ export default function HomePage() {
                     />
                 ))}
             </div>
-
-            <EmailSubscriptionForm activeButtons={clickedButtons} />
-            <div className={styles.navBarContainer}>
-                <NavBar />
+            <div className={styles.emailFormContainer}>
+                <EmailSubscriptionForm 
+                    activeButtons={clickedButtons} 
+                />
             </div>
             <Footer />
         </main>

@@ -1,0 +1,59 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; 
+    padding: 40px 20px; 
+    box-sizing: border-box;
+}
+  
+.backArrow {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+  
+.checkboxContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+  
+.checkboxContainer label {
+    margin-bottom: 15px;
+}
+  
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+}
+  
+.buttonContainer button {
+    width: 48%;
+}
+  
+@media (max-width: 768px) {
+    .buttonContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+  
+    .buttonContainer button {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+  
+    .buttonContainer button:last-child {
+        margin-bottom: 0;
+    }
+}
+  

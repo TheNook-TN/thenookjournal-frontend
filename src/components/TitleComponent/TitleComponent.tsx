@@ -1,11 +1,19 @@
 "use client"; 
 
-import styles from './TitleComponent.module.css';
+import React from 'react';
+import styles from '@/components/TitleComponent/TitleComponent.module.css';
 
-export default function TitleComponent() {
+
+interface TitleComponentProps {
+    text: string;
+}
+
+const TitleComponent: React.FC<TitleComponentProps> = ({ text }) => {
     return (
         <h1 className={styles.title}>
-            thenookjournal.com
+            { text }
         </h1>
     );
 }
+
+export default TitleComponent;
