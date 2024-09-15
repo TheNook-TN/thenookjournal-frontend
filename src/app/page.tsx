@@ -12,15 +12,17 @@ import Footer from '@/components/Footer/Footer';
 import styles from '@/app/page.module.css';
 
 export default function HomePage() {
-    const buttons = ["AI, Data Science & Machine Learning 🧠"];
+    const buttons = [
+        { label: "AI, Data Science & Machine Learning 🧠", code: "ai" } 
+    ];
 
-    const [clickedButtons, setClickedButtons] = useState<string[]>([]);
+    const [clickedButtonCodes, setClickedButtonCodes] = useState<string[]>([]);
 
-    const handleButtonClick = (button: string) => {
-        if (clickedButtons.includes(button)) {
-            setClickedButtons(clickedButtons.filter(item => item !== button));
+    const handleButtonClick = (code: string) => {
+        if (clickedButtonCodes.includes(code)) {
+            setClickedButtonCodes(clickedButtonCodes.filter(item => item !== code));
         } else {
-            setClickedButtons([...clickedButtons, button]);
+            setClickedButtonCodes([...clickedButtonCodes, code]);
         }
     };
 
@@ -41,15 +43,16 @@ export default function HomePage() {
                 {buttons.map((button, index) => (
                     <ButtonComponent
                         key={index}
-                        label={button}
-                        isActive={clickedButtons.includes(button)}
-                        onClick={() => handleButtonClick(button)}
+                        label={button.label}
+                        isActive={clickedButtonCodes.includes(button.code)}
+                        onClick={() => handleButtonClick(button.code)}
+                        code={button.code}
                     />
                 ))}
             </div>
             <div className={styles.emailFormContainer}>
                 <EmailSubscriptionForm 
-                    activeButtons={clickedButtons} 
+                    activeButtons={clickedButtonCodes} 
                 />
             </div>
             <Footer />

@@ -3,6 +3,7 @@
 import styles from './ButtonComponent.module.css';
 
 interface ButtonProps {
+    code: string;
     label: string;
     isActive: boolean;
     onClick: () => void;

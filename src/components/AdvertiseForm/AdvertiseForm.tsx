@@ -7,6 +7,7 @@ import AlertPopup from '@/components/AlertPopup/AlertPopup';
 import styles from '@/components/AdvertiseForm/AdvertiseForm.module.css';
 
 const AdvertiseForm: React.FC = () => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     const [formData, setFormData] = useState({
         email: '',
         companyName: '',
@@ -28,15 +29,15 @@ const AdvertiseForm: React.FC = () => {
     const mapAdvertiseTimeToKey = (advertiseTime: string) => {
         switch (advertiseTime) {
             case 'this_week':
-                return 0;
+                return '0';
             case 'this_month':
-                return 1;
+                return '1';
             case '1_3_months':
-                return 2;
+                return '2';
             case '3_6_months':
-                return 3;
+                return '3';
             case 'more_than_6_months':
-                return 4;
+                return '4';
             default:
                 return null;
         }
@@ -53,14 +54,14 @@ const AdvertiseForm: React.FC = () => {
 
         const payload = {
             email: formData.email,
-            companyName: formData.companyName,
-            targetAudience: formData.targetAudience,
-            advertiseTime: advertiseTimeKey,
+            company_name: formData.companyName,
+            target_audience: formData.targetAudience,
+            advertise_time: advertiseTimeKey,
             comments: formData.comments,
         };
 
         try {
-            const response = await fetch('/api/advertise', {
+            const response = await fetch(apiUrl + '/advertise', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
