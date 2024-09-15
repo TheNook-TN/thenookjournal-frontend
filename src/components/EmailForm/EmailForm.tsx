@@ -7,6 +7,8 @@ import styles from '@/components/EmailForm/EmailForm.module.css';
 
 
 const EmailForm: React.FC = () => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
     const [email, setEmail] = useState<string>('');
     const [alertMessage, setAlertMessage] = useState<string>('');
     const [showAlert, setShowAlert] = useState<boolean>(false);
@@ -20,7 +22,7 @@ const EmailForm: React.FC = () => {
         }
 
         try {
-            const response = await fetch(`https://api.thenookjournal.com/subscriptions?email=${email}`, {
+            const response = await fetch(apiUrl + `/subscriptions?email=${email}`, {
                 method: 'POST',
             });
 
