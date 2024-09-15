@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import styles from '@/components/CheckboxWithLabel/CheckboxWithLabel.module.css';
+import styles from '@/components/CheckBoxWithLabel/CheckBoxWithLabel.module.css';
 
 interface CheckboxProps {
     label: string;
