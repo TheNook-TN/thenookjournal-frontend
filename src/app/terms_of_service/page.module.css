@@ -1,0 +1,78 @@
+.container {
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: flex-start; 
+    height: 100vh; 
+    position: relative;
+    padding: 40px 30px; 
+    line-height: 1.6; 
+    box-sizing: border-box;
+}
+
+.backArrow {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    font-size: 24px; 
+    color: #333; 
+    transition: color 0.2s ease;
+}
+
+.backArrow:hover {
+    color: #555; 
+}
+
+.title {
+    font-size: 2em;
+    text-align: center;
+    color: #222;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.subtitle {
+    font-size: 1.75em;
+    color: #222;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.paragraph {
+    margin-bottom: 15px;
+    font-size: 1em;
+}
+
+.list {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.link {
+    color: #0070f3;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px 15px; 
+    }
+
+    .title {
+        font-size: 1.5em;
+    }
+
+    .subtitle {
+        font-size: 1.5em;
+    }
+
+    .paragraph {
+        font-size: 0.9em;
+    }
+}

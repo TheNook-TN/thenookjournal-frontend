@@ -1,12 +1,13 @@
-import React from 'react';
-import UnderConstruction from '@/components/UnderConstruction/UnderConstruction';
+import { cookies } from 'next/headers';
 
-const HomePage = () => {
-    return (
-        <main style={{ height: '100vh' }}> 
-            <UnderConstruction message="We're working on this feature! Check back soon." />
-        </main>
-    );
+import SubscriptionsPage from '@/app/subscriptions/subscriptions_page';
+
+
+const SubscriptionPage = () => {
+  const cookieStore = cookies();
+  const storedEmail = cookieStore.get('thenookjournal_email')?.value || null;
+
+  return <SubscriptionsPage storedEmail={storedEmail} />;
 };
 
-export default HomePage;
+export default SubscriptionPage;

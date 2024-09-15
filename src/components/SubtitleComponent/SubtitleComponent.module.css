@@ -1,6 +1,16 @@
 .subtitle {
-    font-size: 1rem;
-    font-weight: lighter;
-    font-family: Helvetica, Arial;
-    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    font-weight: 200;
+    font-family: 'Lumberjack Rough', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #ffffff; 
+    text-align: center; 
+    line-height: 1.5; 
+    margin-bottom: 3rem; 
+}
+
+@media (max-width: 600px) {
+    .subtitle {
+        font-size: 1.2rem; 
+        margin-bottom: 2rem; 
+    }
 }

@@ -7,17 +7,18 @@
     justify-content: space-between; 
     height: 100vh;
     text-align: center;
-    padding: 20px; 
+    padding: 20px 0px 0px 0px; 
 }
 
-.titleSubtitleGroup {
+.titleSubtitleContainer {
     margin-top: 20px; 
     flex-grow: 0;
 }
 
-.buttons {
+.buttonsContainer {
     margin-top: 50px; 
     margin-bottom: 30px; 
+    margin: 50px 20px 30px 20px;
 }
 
 .link {
@@ -29,4 +30,8 @@
     width: 100%; 
     bottom: 0;
     left: 0;
+}
+
+.emailFormContainer {
+    margin-bottom: 40px;
 }

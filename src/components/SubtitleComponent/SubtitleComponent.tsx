@@ -2,11 +2,21 @@
 
 import styles from './SubtitleComponent.module.css';
 
-export default function SubtitleComponent() {
+interface SubtitleComponentProps {
+    text:string[];
+}
+
+const SubtitleComponent: React.FC<SubtitleComponentProps> = ({ text }) => {
     return (
         <h2 className={styles.subtitle}>
-            This is your Nook<br />
-            This is your Journal
+            {text.map((text, index) => (
+                <span key={index}>
+                    {text}
+                    <br />
+                </span>
+            ))}
         </h2>
     );
 }
+
+export default SubtitleComponent;
