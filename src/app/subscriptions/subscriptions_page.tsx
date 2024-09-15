@@ -74,7 +74,6 @@ const SubscriptionsPage: React.FC<SubscriptionsPageProps> = ({ storedEmail }) =>
                 error={error}
                 alertMessage={alertMessage}
                 handleAlertClose={handleAlertClose}
-                handleEmailSubmit={handleEmailSubmit}
             />
         );
     }
