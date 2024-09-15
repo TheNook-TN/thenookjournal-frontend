@@ -9,7 +9,10 @@ interface EmailSubscriptionFormProps {
 }
 
 export default function EmailSubscriptionForm({ activeButtons  }: EmailSubscriptionFormProps) {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
     const [email, setEmail] = useState<string>('');
+    const [alertMessage, setAlertMessage] = useState<string>('');
     const [showAlert, setShowAlert] = useState<boolean>(false);
 
     const handleSubmit = async () => {
@@ -19,29 +22,31 @@ export default function EmailSubscriptionForm({ activeButtons  }: EmailSubscript
         }
 
         if (!email) {
-            alert("Please enter an email address.");
+            setShowAlert(true);
+            setAlertMessage("Please enter an email address.");
             return;
         }
 
         try {
-            const query = activeButtons.map(button => `list=${button}`).join('&');
-            const response = await fetch(`https://api.thenookjournal.com/subscriptions?email=${email}&${query}`, {
+            const query = activeButtons.map(button => `subscriptions=${button}`).join('&'); 
+            const response = await fetch(`${apiUrl}/subscriptions?email=${email}&${query}`, {
                 method: 'POST',
             });
-
+    
             if (!response.ok) {
                 throw new Error('Failed to subscribe.');
             }
-
-            alert("Successfully subscribed!");
+            setShowAlert(true);
+            setAlertMessage("Successfully subscribed!");
         } catch (error) {
-        alert(`Error:`);
+            setShowAlert(true);
+            setAlertMessage(`You are already subscribe. If you want to make changes go to "subscriptions"`);
         }
     };
 
     return (
         <>
-            {showAlert && <AlertPopup message="Choose the newsletter you want to read" onClose={() => setShowAlert(false)} />}
+            {showAlert && <AlertPopup message={alertMessage} onClose={() => setShowAlert(false)} />}
 
             <div className={styles.emailSection}>
                 <input 
