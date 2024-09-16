@@ -23,17 +23,16 @@ const EmailForm: React.FC = () => {
 
         try {
             const response = await fetch(apiUrl + `/subscriptions?email=${email}`, {
-                method: 'POST',
+                method: 'GET',
             });
 
             if (!response.ok) {
                 setShowAlert(true)
                 setAlertMessage('Failed to read.');
-            }
-;
+            };
         } catch (error) {
             setShowAlert(true)
-            setAlertMessage(`Error:` + {error});
+            setAlertMessage(`Sorry, an error has occured`);
         }
     };
 
