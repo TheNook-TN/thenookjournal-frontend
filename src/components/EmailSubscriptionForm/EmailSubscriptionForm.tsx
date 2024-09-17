@@ -18,6 +18,7 @@ export default function EmailSubscriptionForm({ activeButtons  }: EmailSubscript
     const handleSubmit = async () => {
         if (activeButtons.length === 0) {
             setShowAlert(true);
+            setAlertMessage("Make sure you have selected at least one option by clicking on it")
             return;
         }
 

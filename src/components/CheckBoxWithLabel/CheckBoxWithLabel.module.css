@@ -1,7 +1,7 @@
 .checkboxContainer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: 20px 10px; 
     background-color: #4d81a75e; 
     border-radius: 8px;
@@ -25,6 +25,8 @@
     border-radius: 50px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-right: 15px; 
+    flex-shrink: 0; 
 }
 
 .switch::before {
@@ -40,7 +42,7 @@
 }
 
 .checkboxInput:checked + .switch {
-    background-color: #4caf50; 
+    background-color: #4caf50;
 }
 
 .checkboxInput:checked + .switch::before {
@@ -50,8 +52,10 @@
 .label {
     font-size: 1rem;
     color: white;
-    margin-left: 10px;
+    flex-grow: 1; 
+    text-align: left; 
     transition: font-size 0.3s ease;
+    margin-left: 10px;
 }
 
 @media (max-width: 600px) {

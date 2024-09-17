@@ -1,6 +1,10 @@
 import React from 'react';
+import Link from 'next/link';
+
+import { useState, useEffect } from 'react';
 
 import BackArrow from '@/components/BackArrow/BackArrow';
+import AlertPopup from '@/components/AlertPopup/AlertPopup';
 import CustomButton from '@/components/CustomButton/CustomButtom';
 import CheckboxWithLabel from '@/components/CheckBoxWithLabel/CheckBoxWithLabel';
 
@@ -8,46 +12,141 @@ import styles from '@/app/subscriptions/page.module.css';
 
 interface ManageSubscriptionsPageProps {
     email: string;
-    subscriptions: string[];
-    handleCheckboxChange: (subscription: string, isChecked: boolean) => void;
-    handleUpdateSubscription: () => void;
-    handleDeleteSubscription: () => void;
+    initialSubscriptions: string[];
 }
 
 const ManageSubscriptionsPage: React.FC<ManageSubscriptionsPageProps> = ({ 
     email, 
-    subscriptions, 
-    handleCheckboxChange, 
-    handleUpdateSubscription, 
-    handleDeleteSubscription 
+    initialSubscriptions = []
 }) => {
+    
+    const [redirect, setRedirect] = useState<boolean>(false);
+    const [subscriptions, setSubscriptions] = useState<string[]>(initialSubscriptions);
+    const [showAlert, setShowAlert] = useState<boolean>(false);
+    const [alertMessage, setAlertMessage] = useState<string>('');
+
+    useEffect(() => {
+        setSubscriptions(initialSubscriptions);
+    }, [initialSubscriptions]);
+
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+    const handleCheckboxChange = (subscription: string, isChecked: boolean) => {
+        setSubscriptions(prev =>
+            isChecked 
+            ? [...prev, subscription] 
+            : prev.filter(sub => sub !== subscription)
+        );
+    };
+    
+    const handleUpdateSubscription = async () => {
+        try {
+            const queryParams = new URLSearchParams();
+            queryParams.append('email', email);
+            subscriptions.forEach(sub => queryParams.append('subscriptions', sub));
+
+            const response = await fetch(`${apiUrl}/subscriptions?${queryParams.toString()}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (!response.ok) {
+                setShowAlert(true)
+                setAlertMessage('Failed to update subscriptions');
+            }
+
+            setShowAlert(true);
+            setAlertMessage('Your subscriptions have been updated');
+
+        } catch (error) {
+            setShowAlert(true)
+            setAlertMessage('Error updating your subscriptions');
+        }
+    };
+
+    const handleDeleteSubscription = async () => {
+        try {
+            const response = await fetch(`${apiUrl}/subscriptions?email=${email}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (!response.ok) {
+                setShowAlert(true)
+                setAlertMessage('Failed to delete subscriptions');
+            }
+
+            setShowAlert(true)
+            setAlertMessage('Deleted subscriptions successfully');
+            setSubscriptions([]);
+
+            document.cookie = "thenookjournal_email=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+            setRedirect(true);
+            
+
+        } catch (error) {
+            setShowAlert(true)
+            setAlertMessage('Error deleting your subscription');
+        }
+    };
+
     return (
-        <div className={styles.container}>
-            <div className={styles.backArrow}>
-                <BackArrow />
-            </div>
+        <>
+            {showAlert && <AlertPopup message={alertMessage} onClose={() => setShowAlert(false)} />}
+            {redirect && <Link href="/" passHref />}
+        
+            <div className={styles.container}>
+                
+                <div className={styles.backArrow}>
+                    <BackArrow />
+                </div>
 
-            <div className={styles.checkboxContainer}>
-                <CheckboxWithLabel
-                    label="AI, Data Science & Machine Learning 🧠"
-                    subscription="ai"
-                    onChange={handleCheckboxChange}
-                />
-            </div>
+                <div className={styles.checkboxContainer}>
+                    <CheckboxWithLabel
+                        label="AI, Data Science & Machine Learning 🧠"
+                        subscription="ai"
+                        isChecked={subscriptions.includes("ai")}
+                        onChange={handleCheckboxChange}
+                    />
+                    <CheckboxWithLabel
+                        label="Thoughts 💡 (Coming Soon)"
+                        subscription="th"
+                        isChecked={subscriptions.includes("th")}
+                        onChange={handleCheckboxChange}
+                    />
+                    <CheckboxWithLabel
+                        label="Robotics 🤖 (Coming Soon)"
+                        subscription="rb"
+                        isChecked={subscriptions.includes("rb")}
+                        onChange={handleCheckboxChange}
+                    />
+                    <CheckboxWithLabel
+                        label="Software 🧑‍💻 (Coming Soon)"
+                        subscription="sf"
+                        isChecked={subscriptions.includes("sf")}
+                        onChange={handleCheckboxChange}
+                    />
+                </div>
 
-            <div className={styles.buttonContainer}>
-                <CustomButton
-                    color='#1c86ee'
-                    buttonText='Update'
-                    onClick={handleUpdateSubscription}
-                />
-                <CustomButton
-                    color='#f03c3c'
-                    buttonText='Delete'
-                    onClick={handleDeleteSubscription}
-                />
+                <div className={styles.buttonContainer}>
+                    <CustomButton
+                        color='#1c86ee'
+                        buttonText='Update'
+                        onClick={handleUpdateSubscription}
+                    />
+                    <CustomButton
+                        color='#f03c3c'
+                        buttonText='Delete'
+                        onClick={handleDeleteSubscription}
+                    />
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 
