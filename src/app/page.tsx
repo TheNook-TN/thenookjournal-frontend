@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import TitleComponent from '@/components/TitleComponent/TitleComponent';
 import SubtitleComponent from '@/components/SubtitleComponent/SubtitleComponent';
@@ -19,6 +19,8 @@ export default function HomePage() {
         { label: "Thoughts 💡 (coming soon)", code: "th"}  
     ];
 
+    const emailInputRef = useRef<HTMLInputElement>(null);
+
     const [clickedButtonCodes, setClickedButtonCodes] = useState<string[]>([]);
 
     const handleButtonClick = (code: string) => {
@@ -28,6 +30,12 @@ export default function HomePage() {
             setClickedButtonCodes([...clickedButtonCodes, code]);
         }
     };
+
+    useEffect(() => {
+        if (emailInputRef.current) {
+            emailInputRef.current.focus();
+        }
+    }, []);
 
     return (
         <main className={styles.container}>
@@ -54,8 +62,9 @@ export default function HomePage() {
                 ))}
             </div>
             <div className={styles.emailFormContainer}>
-                <EmailSubscriptionForm 
-                    activeButtons={clickedButtonCodes} 
+            <EmailSubscriptionForm 
+                    activeButtons={clickedButtonCodes}
+                    inputRef={emailInputRef} 
                 />
             </div>
             <Footer />
