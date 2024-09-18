@@ -24,13 +24,15 @@
 .socialContainer {
     display: flex;
     flex-direction: row;
-    gap: 50px;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
-
 
 @media (max-width: 768px) {
     .socialContainer {
         flex-direction: column; 
-        gap: 15px;
+        gap: 20px;
+        align-items: center;
     }
-}
+} 
