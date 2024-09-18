@@ -13,7 +13,10 @@ import styles from '@/app/page.module.css';
 
 export default function HomePage() {
     const buttons = [
-        { label: "AI, Data Science & Machine Learning 🧠", code: "ai" } 
+        { label: "AI, Data Science & Machine Learning 🧠", code: "ai" },
+        { label: "Robotics & Automation 🤖 (coming soon)", code: "rb"},
+        { label: "Software Development 🧑‍💻 (coming soon)", code: "sf"},
+        { label: "Thoughts 💡 (coming soon)", code: "th"}  
     ];
 
     const [clickedButtonCodes, setClickedButtonCodes] = useState<string[]>([]);
