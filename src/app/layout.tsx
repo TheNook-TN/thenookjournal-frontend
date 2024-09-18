@@ -21,21 +21,21 @@ export default function RootLayout({
                 <title>{metadata.title}</title>
                 <meta name="description" content={metadata.description} />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="icon" href="favico.ico" type="image/x-icon" />
+                <link rel="icon" href="/favico.ico" type="image/x-icon" />
                 
                 {/* Open Graph (OG) tags for social sharing */}
-                <meta property="og:title" content="TheNookJournal - Your Source for AI, Data Science, and Machine Learning Insights" />
-                <meta property="og:description" content="Stay updated with the latest news, trends, and insights in AI, Data Science, Machine Learning, and more with TheNookJournal Newsletter." />
+                <meta property="og:title" content={metadata.title} />
+                <meta property="og:description" content={metadata.description} />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://thenookjournal.com" />
-                <meta property="og:image" content="https://thenookjournal.com/og-image.jpg" />
+                <meta property="og:image" content="/metadata/logo.png" />
 
                 {/* Twitter Card tags for better presentation on Twitter */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:site" content="@TheNookJournal" />
-                <meta name="twitter:title" content="TheNookJournal - Your Source for AI, Data Science, and Machine Learning Insights" />
-                <meta name="twitter:description" content="Stay updated with the latest news, trends, and insights in AI, Data Science, Machine Learning, and more with TheNookJournal Newsletter." />
-                <meta name="twitter:image" content="https://thenookjournal.com/og-image.jpg" />
+                <meta name="twitter:title" content={metadata.title} />
+                <meta name="twitter:description" content={metadata.description} />
+                <meta name="twitter:image" content="/metadata/logo.png" />
 
                 {/* Additional tags for better SEO */}
                 <meta name="keywords" content="AI, Data Science, Machine Learning, Newsletter, TheNookJournal, Technology Trends, Artificial Intelligence, Data Analysis" />

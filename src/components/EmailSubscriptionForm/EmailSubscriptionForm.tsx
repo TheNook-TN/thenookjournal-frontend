@@ -6,9 +6,10 @@ import styles from './EmailSubscriptionForm.module.css';
 
 interface EmailSubscriptionFormProps {
     activeButtons: string[];
+    inputRef?: React.RefObject<HTMLInputElement>;
 }
 
-export default function EmailSubscriptionForm({ activeButtons  }: EmailSubscriptionFormProps) {
+export default function EmailSubscriptionForm({ activeButtons, inputRef  }: EmailSubscriptionFormProps) {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
     const [email, setEmail] = useState<string>('');
@@ -53,6 +54,7 @@ export default function EmailSubscriptionForm({ activeButtons  }: EmailSubscript
                 <input 
                     type="email" 
                     placeholder="Enter your email" 
+                    ref={inputRef}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)} 
                     className={styles.emailInput} 

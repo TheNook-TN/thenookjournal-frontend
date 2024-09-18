@@ -1,7 +1,9 @@
+// /app/follow/page.tsx
+
 import React from 'react';
 
 import BackArrow from '@/components/BackArrow/BackArrow';
-import SocialCircle from '@/components/SocialCircle/SocialCircle';
+import SocialCard from '@/components/SocialCard/SocialCard';
 import SubtitleComponent from '@/components/SubtitleComponent/SubtitleComponent';
 
 import styles from '@/app/follow/page.module.css';
@@ -18,26 +20,28 @@ const FollowPage: React.FC = () => {
                 />
             </div>
             <div className={styles.socialContainer}>
-                <SocialCircle 
+                <SocialCard 
                     title="X"
-                    link="https://twitter.com/yourprofile" 
+                    link="https://x.com/thenookjournal" 
                     imageSrc="/social/twitter-x.svg"  
                     altText="X (Twitter)" 
+                    description="Join us on X for the latest updates and conversations."
                 />
-                <SocialCircle
-                    title="Linkedin" 
-                    link="https://www.linkedin.com/in/yourprofile" 
+                <SocialCard
+                    title="LinkedIn" 
+                    link="https://www.linkedin.com/company/thenookjournal" 
                     imageSrc="/social/linkedin.svg" 
                     altText="LinkedIn" 
+                    description="Connect with us on LinkedIn for professional insights."
                 />
-                <SocialCircle 
+                <SocialCard 
                     title="Medium"
-                    link="https://medium.com/@yourprofile" 
+                    link="https://medium.com/thenookjournal" 
                     imageSrc="/social/medium.svg" 
                     altText="Medium" 
+                    description="Read our articles and stories on Medium."
                 />
             </div>
-            
         </div>
     );
 };
