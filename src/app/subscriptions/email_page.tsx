@@ -11,18 +11,19 @@ interface AskEmailPageProps {
     error: boolean;
     alertMessage: string;
     handleAlertClose: () => void;
+    handleEmailSubmit: (email: string) => void; 
 }
 
 const AskEmailPage: React.FC<AskEmailPageProps> = ({ 
     error, 
     alertMessage, 
     handleAlertClose, 
+    handleEmailSubmit,
 }) => {
     return (
-            
         <div className={styles.container}>
             {error && <AlertPopup message={alertMessage} onClose={handleAlertClose} />}
-            
+
             <div className={styles.backArrow}>
                 <BackArrow />
             </div>
@@ -30,9 +31,8 @@ const AskEmailPage: React.FC<AskEmailPageProps> = ({
                 <SubtitleComponent 
                     text={['Manage your subscriptions', 'Please enter your email']}
                 />
-                <EmailForm />
+                <EmailForm onSubmit={handleEmailSubmit} /> 
             </div>
-            
         </div>
     );
 };

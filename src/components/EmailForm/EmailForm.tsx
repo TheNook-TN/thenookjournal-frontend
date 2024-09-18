@@ -5,33 +5,38 @@ import AlertPopup from '@/components/AlertPopup/AlertPopup';
 
 import styles from '@/components/EmailForm/EmailForm.module.css';
 
+interface EmailFormProps {
+    onSubmit: (email: string) => void;
+}
 
-const EmailForm: React.FC = () => {
+const EmailForm: React.FC<EmailFormProps> = ({ onSubmit }) => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+    
     const [email, setEmail] = useState<string>('');
     const [alertMessage, setAlertMessage] = useState<string>('');
     const [showAlert, setShowAlert] = useState<boolean>(false);
     
     const handleSubmit = async () => {
-        
         if (!email) {
             setShowAlert(true);
             setAlertMessage("Please enter an email address.");
             return;
         }
-
+    
         try {
-            const response = await fetch(`https://api.thenookjournal.com/subscriptions?email=${email}`, {
-                method: 'POST',
+            const response = await fetch(apiUrl + `/subscriptions?email=${email}`, {
+                method: 'GET',
             });
-
+            
             if (!response.ok) {
-                setShowAlert(true)
-                setAlertMessage('Failed to read.');
+                setShowAlert(true);
+                setAlertMessage(`User ${email} is not subscribed or was not found`);
+            } else {
+                onSubmit(email);
             }
-;
         } catch (error) {
-            setShowAlert(true)
-            setAlertMessage(`Error:` + {error});
+            setShowAlert(true);
+            setAlertMessage(`Sorry, an error has occurred`);
         }
     };
 

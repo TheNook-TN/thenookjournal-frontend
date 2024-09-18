@@ -5,22 +5,21 @@ import React, { useState, useEffect } from 'react';
 import AskEmailPage from '@/app/subscriptions/email_page';
 import ManageSubscriptionsPage from '@/app/subscriptions/manage_page';
 
-import { handleUpdateSubscription } from '@/utils/subscriptions/subscriptionUpdateHandler';
-import { handleDeleteSubscription } from '@/utils/subscriptions/subscriptionsDeleteHandler';
-
 interface SubscriptionsPageProps {
   storedEmail: string | null;
 }
 
 const SubscriptionsPage: React.FC<SubscriptionsPageProps> = ({ storedEmail }) => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
     const [email, setEmail] = useState<string | null>(storedEmail);
     const [subscriptions, setSubscriptions] = useState<string[]>([]);
     const [error, setError] = useState<boolean>(false);
     const [alertMessage, setAlertMessage] = useState('');
 
-    const fetchSubscriptions = async (userEmail: string) => {
+    const fetchSubscriptions = async (email: string) => {
         try {
-        const response = await fetch(`https://thenookjournal.com/subscriptions?email=${userEmail}`);
+        const response = await fetch(apiUrl + `/subscriptions?email=${email}`);
             if (response.status === 404) {
                 setError(true);
                 setAlertMessage('User not found or does not exist');
@@ -29,6 +28,7 @@ const SubscriptionsPage: React.FC<SubscriptionsPageProps> = ({ storedEmail }) =>
             }
             const data = await response.json();
             setSubscriptions(data.subscriptions);
+            document.cookie = `thenookjournal_email=${email}`;
         } catch (err) {
             setAlertMessage('Error fetching subscriptions: ' + err);
             setError(true);
@@ -52,16 +52,7 @@ const SubscriptionsPage: React.FC<SubscriptionsPageProps> = ({ storedEmail }) =>
     const handleEmailSubmit = (submittedEmail: string) => {
         setEmail(submittedEmail);
         fetchSubscriptions(submittedEmail);
-
-        document.cookie = `thenookjournal_email=${submittedEmail}`; 
-    };
-
-    const handleCheckboxChange = (subscription: string, isChecked: boolean) => {
-        setSubscriptions(prev =>
-            isChecked 
-            ? [...prev, subscription] 
-            : prev.filter(sub => sub !== subscription)
-        );
+        document.cookie = `thenookjournal_email=${submittedEmail}`;
     };
 
     const handleAlertClose = () => {
@@ -74,6 +65,7 @@ const SubscriptionsPage: React.FC<SubscriptionsPageProps> = ({ storedEmail }) =>
                 error={error}
                 alertMessage={alertMessage}
                 handleAlertClose={handleAlertClose}
+                handleEmailSubmit={handleEmailSubmit}
             />
         );
     }
@@ -81,10 +73,7 @@ const SubscriptionsPage: React.FC<SubscriptionsPageProps> = ({ storedEmail }) =>
     return (
         <ManageSubscriptionsPage
             email={email}
-            subscriptions={subscriptions}
-            handleCheckboxChange={handleCheckboxChange}
-            handleUpdateSubscription={() => handleUpdateSubscription(email, subscriptions)}
-            handleDeleteSubscription={() => handleDeleteSubscription(email)}
+            initialSubscriptions={subscriptions}
         />
     );
 };

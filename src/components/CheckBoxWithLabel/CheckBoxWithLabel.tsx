@@ -1,18 +1,16 @@
-import { useState } from 'react';
+import React from 'react';
 
 import styles from '@/components/CheckBoxWithLabel/CheckBoxWithLabel.module.css';
 
-interface CheckboxProps {
+interface CheckboxWithLabelProps {
     label: string;
     subscription: string;
+    isChecked: boolean;
     onChange: (subscription: string, isChecked: boolean) => void;
 }
 
-const CheckboxComponent = ({ label, subscription, onChange }: CheckboxProps) => {
-    const [isChecked, setIsChecked] = useState(false);
-
+const CheckboxWithLabel: React.FC<CheckboxWithLabelProps> = ({ label, subscription, isChecked, onChange }) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setIsChecked(e.target.checked);
         onChange(subscription, e.target.checked);
     };
 
@@ -30,4 +28,4 @@ const CheckboxComponent = ({ label, subscription, onChange }: CheckboxProps) => 
     );
 };
 
-export default CheckboxComponent;
+export default CheckboxWithLabel;
