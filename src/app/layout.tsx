@@ -1,8 +1,6 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+import { Analytics } from "@vercel/analytics/react"
 
 export const metadata = {
     title: 'TheNookJournal - Your Source for AI, Data Science, and Machine Learning Insights',
@@ -44,6 +42,7 @@ export default function RootLayout({
             </head>
             <body>
                 {children}
+                <Analytics />
             </body>
         </html>
     );
