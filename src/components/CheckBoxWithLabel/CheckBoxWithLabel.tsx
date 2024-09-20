@@ -1,5 +1,6 @@
 import React from 'react';
 
+import CheckBox from '@/components/CheckBox/CheckBox';
 import styles from '@/components/CheckBoxWithLabel/CheckBoxWithLabel.module.css';
 
 interface CheckboxWithLabelProps {
@@ -16,13 +17,10 @@ const CheckboxWithLabel: React.FC<CheckboxWithLabelProps> = ({ label, subscripti
 
     return (
         <label className={styles.checkboxContainer}>
-            <input
-                type="checkbox"
-                checked={isChecked}
+            <CheckBox
+                isChecked={isChecked}
                 onChange={handleChange}
-                className={styles.checkboxInput}
             />
-            <span className={styles.switch}></span>
             <span className={styles.label}>{label}</span>
         </label>
     );
