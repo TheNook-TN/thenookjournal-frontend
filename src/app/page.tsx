@@ -13,10 +13,10 @@ import styles from '@/app/page.module.css';
 
 export default function HomePage() {
     const buttons = [
-        { label: "AI, Data Science & Machine Learning 🧠", code: "ai" },
-        { label: "Robotics & Automation 🤖 (coming soon)", code: "rb"},
-        { label: "Software Development 🧑‍💻 (coming soon)", code: "sf"},
-        { label: "Thoughts 💡 (coming soon)", code: "th"}  
+        { label: "AI, Data Science & Machine Learning 🧠", code: "ai", isDeactivated: false },
+        { label: "Robotics & Automation 🤖 (coming soon)", code: "rb", isDeactivated: true },
+        { label: "Software Development 🧑‍💻 (coming soon)", code: "sf", isDeactivated: true },
+        { label: "Thoughts 💡 (coming soon)", code: "th", isDeactivated: true }
     ];
 
     const emailInputRef = useRef<HTMLInputElement>(null);
@@ -43,12 +43,8 @@ export default function HomePage() {
                 <NavBar />
             </div>
             <div className={styles.titleSubtitleContainer}>
-                <TitleComponent 
-                    text='thenookjournal.com'
-                />
-                <SubtitleComponent 
-                    text={['This is your Nook', 'This is your Journal']}
-                />
+                <TitleComponent text="thenookjournal.com" />
+                <SubtitleComponent text={["This is your Nook", "This is your Journal"]} />
             </div>
             <div className={styles.buttonsContainer}>
                 {buttons.map((button, index) => (
@@ -56,13 +52,14 @@ export default function HomePage() {
                         key={index}
                         label={button.label}
                         isActive={clickedButtonCodes.includes(button.code)}
+                        isDeactivated={button.isDeactivated}
                         onClick={() => handleButtonClick(button.code)}
                         code={button.code}
                     />
                 ))}
             </div>
             <div className={styles.emailFormContainer}>
-            <EmailSubscriptionForm 
+                <EmailSubscriptionForm 
                     activeButtons={clickedButtonCodes}
                     inputRef={emailInputRef} 
                 />
