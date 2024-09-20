@@ -4,21 +4,30 @@
     margin-bottom: 2rem;
 }
 
-.button, .activeButton {
+.button, .activeButton, .deactivatedButton {
     padding: 10px 20px;
     font-size: 1rem;
     cursor: pointer;
     border: none;
     border-radius: 5px;
-    background-color: #3c75ad;
     color: white;
     transition: background-color 0.3s ease;
 }
 
+.button {
+    background-color: #3c75ad; 
+}
+
 .activeButton {
-    background-color: #1abc9c;
+    background-color: #1abc9c; 
 }
 
 .button:hover {
-    background-color: #1abc9c;
+    background-color: #63eed2; 
+}
+
+.deactivatedButton {
+    background-color: #7f8c8d;
+    cursor: not-allowed;
+    opacity: 0.6;
 }
