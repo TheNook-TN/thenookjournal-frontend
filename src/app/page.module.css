@@ -36,5 +36,13 @@
 }
 
 .emailFormContainer {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.newsletterText {
     margin-bottom: 40px;
+    font-size: 0.7rem;
+    color: #c5c5c5;
+    text-align: center;
 }

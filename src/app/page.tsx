@@ -64,6 +64,11 @@ export default function HomePage() {
                     inputRef={emailInputRef} 
                 />
             </div>
+            <div>
+                <p className={styles.newsletterText}>
+                    Join to our newsletters by selecting the topics you want to be daily updated
+                </p>
+            </div>
             <Footer />
         </main>
     );
