@@ -17,11 +17,11 @@ const CheckboxWithLabel: React.FC<CheckboxWithLabelProps> = ({ label, subscripti
 
     return (
         <label className={styles.checkboxContainer}>
+            <span className={styles.label}>{label}</span>
             <CheckBox
                 isChecked={isChecked}
                 onChange={handleChange}
-            />
-            <span className={styles.label}>{label}</span>
+            />           
         </label>
     );
 };
