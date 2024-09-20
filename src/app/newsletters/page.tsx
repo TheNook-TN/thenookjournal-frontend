@@ -3,9 +3,9 @@ import React from 'react';
 import RoundedBox from '@/components/RoundedBox/RoundedBox';
 import BackArrow from '@/components/BackArrow/BackArrow';
 
-import styles from '@/app/about/page.module.css';
+import styles from '@/app/newsletters/page.module.css';
 
-const AboutPage: React.FC = () => {
+const NewslettersPage: React.FC = () => {
     return (
         <div className={styles.container}>
             <div className={styles.backArrow}>
@@ -41,4 +41,4 @@ const AboutPage: React.FC = () => {
     );
 };
 
-export default AboutPage;
+export default NewslettersPage;

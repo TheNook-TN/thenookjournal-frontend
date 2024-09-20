@@ -6,7 +6,7 @@ const NavBar = () => {
     return (
         <nav>
             <ul className={styles.navList}>
-                <NavItem href="/about" label="About" />
+                <NavItem href="/newsletters" label="Newsletters"/>
                 <span className={styles.separator}>|</span>
 
                 <NavItem href="/subscriptions" label="Subscriptions" />
