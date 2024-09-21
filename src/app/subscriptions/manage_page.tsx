@@ -8,6 +8,8 @@ import AlertPopup from '@/components/AlertPopup/AlertPopup';
 import CustomButton from '@/components/CustomButton/CustomButtom';
 import CheckboxWithLabel from '@/components/CheckBoxWithLabel/CheckBoxWithLabel';
 
+import { newsletterTopics } from '@/data/newsletterTopics';
+
 import styles from '@/app/subscriptions/page.module.css';
 
 interface ManageSubscriptionsPageProps {
@@ -107,30 +109,16 @@ const ManageSubscriptionsPage: React.FC<ManageSubscriptionsPageProps> = ({
                 </div>
 
                 <div className={styles.checkboxContainer}>
-                    <CheckboxWithLabel
-                        label="AI, Data Science & Machine Learning 🧠"
-                        subscription="ai"
-                        isChecked={subscriptions.includes("ai")}
-                        onChange={handleCheckboxChange}
-                    />
-                    <CheckboxWithLabel
-                        label="Thoughts 💡 (Coming Soon)"
-                        subscription="th"
-                        isChecked={subscriptions.includes("th")}
-                        onChange={handleCheckboxChange}
-                    />
-                    <CheckboxWithLabel
-                        label="Robotics 🤖 (Coming Soon)"
-                        subscription="rb"
-                        isChecked={subscriptions.includes("rb")}
-                        onChange={handleCheckboxChange}
-                    />
-                    <CheckboxWithLabel
-                        label="Software 🧑‍💻 (Coming Soon)"
-                        subscription="sf"
-                        isChecked={subscriptions.includes("sf")}
-                        onChange={handleCheckboxChange}
-                    />
+                    {newsletterTopics.map((topic) => (
+                        <CheckboxWithLabel
+                            key={topic.code}
+                            label={topic.label}
+                            subscription={topic.code}
+                            isChecked={subscriptions.includes(topic.code)}
+                            isDeactivated={topic.isDeactivated}
+                            onChange={handleCheckboxChange}
+                        />
+                    ))}
                 </div>
 
                 <div className={styles.buttonContainer}>

@@ -12,8 +12,8 @@
     border-radius: 50px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-right: 15px; 
-    flex-shrink: 0; 
+    margin-right: 15px;
+    flex-shrink: 0;
 }
 
 .switch::before {
@@ -34,4 +34,14 @@
 
 .checkboxInput:checked + .switch::before {
     transform: translateX(20px);
+}
+
+.checkboxInput[disabled] + .switch {
+    background-color: #7f8c8d; 
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.checkboxInput[disabled] + .switch::before {
+    background-color: #ccc;
 }
