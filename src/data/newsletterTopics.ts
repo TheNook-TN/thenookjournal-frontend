@@ -25,22 +25,22 @@ export const newsletterTopics: NewsletterTopic[] = [
         code: "rb",
         isDeactivated: true,
         emoji: "🤖",
-        title: "Robotics (coming soon)",
+        title: "Robotics & Automation (coming soon)",
         description:
-            "Tools and Resources every day? You've got it. Daily papers summarized? You've got it. Articles to keep learning? Quick news summaries and links? You've got it. And of course, a daily meme, because life is too short not to laugh.",
+            "Explore the future of robotics and automation with our upcoming newsletter. Receive updates on cutting-edge technologies, industry trends, and practical tutorials to build and innovate in the world of robotics.",
         shortDescription:
-            "A daily meme, tools, resources, summarized papers, step-by-step tutorials, and the latest news.",
+            "Upcoming insights on robotics and automation. Latest technologies, industry trends, and practical tutorials."
     },
     {
-        label: "Software Development 🧑‍💻 (coming soon)",
+        label: "Tech & Software 🧑‍💻 (coming soon)",
         code: "sf",
         isDeactivated: true,
         emoji: "🧑‍💻",
-        title: "Software (coming soon)",
+        title: "Tech & Software (coming soon)",
         description:
-            "Tools and Resources every day? You've got it. Daily papers summarized? You've got it. Articles to keep learning? Quick news summaries and links? You've got it. And of course, a daily meme, because life is too short not to laugh.",
+            "Dive into the world of software development with our forthcoming newsletter. Stay informed about best practices, emerging frameworks, coding tutorials, and the latest industry news to elevate your development skills.",
         shortDescription:
-            "A daily meme, tools, resources, summarized papers, step-by-step tutorials, and the latest news.",
+            "Upcoming updates on software development. Best practices, emerging frameworks, coding tutorials, and industry news."
     },
     {
         label: "Thoughts 💡 (coming soon)",
@@ -49,8 +49,8 @@ export const newsletterTopics: NewsletterTopic[] = [
         emoji: "💡",
         title: "Thoughts (coming soon)",
         description:
-            "Here we get intense—just thoughts, ideas, and daily opinions. Like trying to fix the world with your friend but in a 2-5 minute read. How does that sound?",
+            "Engage with profound thoughts, innovative ideas, and daily reflections. Our upcoming newsletter offers bite-sized reads that inspire you to think differently and spark meaningful conversations.",
         shortDescription:
-            "Intense thoughts, ideas, and daily opinions. Fixing the world with your friend but in a 2-5 minute read.",
+            "Daily reflections and innovative ideas. Bite-sized reads to inspire and spark meaningful conversations."
     },
 ];
