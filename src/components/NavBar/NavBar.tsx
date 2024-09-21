@@ -9,13 +9,13 @@ const NavBar = () => {
                 <NavItem href="/newsletters" label="Newsletters"/>
                 <span className={styles.separator}>|</span>
 
-                <NavItem href="/subscriptions" label="Subscriptions" />
+                <NavItem href="/advertise" label="Advertise" />
                 <span className={styles.separator}>|</span>
 
                 <NavItem href="/archive" label="Archive" />
                 <span className={styles.separator}>|</span>
 
-                <NavItem href="/advertise" label="Advertise" />
+                <NavItem href="/subscriptions" label="Subscriptions" />
                 <span className={styles.separator}>|</span>
 
                 <NavItem href="/follow" label="Follow" />
