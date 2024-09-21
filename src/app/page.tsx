@@ -14,6 +14,7 @@ import { newsletterTopics } from '@/data/newsletterTopics';
 import styles from '@/app/page.module.css';
 
 export default function HomePage() {
+    
     const emailInputRef = useRef<HTMLInputElement>(null);
 
     const [clickedButtonCodes, setClickedButtonCodes] = useState<string[]>([]);
@@ -29,6 +30,29 @@ export default function HomePage() {
     useEffect(() => {
         if (emailInputRef.current) {
             emailInputRef.current.focus();
+        }
+    }, []);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const urlParams = new URLSearchParams(window.location.search);
+            const subscriptions = urlParams.getAll('subscription');
+
+            let initialClickedButtonCodes: string[] = [];
+
+            if (subscriptions.length > 0) {
+                subscriptions.forEach((sub) => {
+                    const codes = sub.split('%');
+                    initialClickedButtonCodes.push(...codes);
+                });
+            }
+
+            const validCodes = newsletterTopics.map((topic) => topic.code);
+            initialClickedButtonCodes = initialClickedButtonCodes.filter((code) =>
+                validCodes.includes(code)
+            );
+
+            setClickedButtonCodes(initialClickedButtonCodes);
         }
     }, []);
 
